@@ -17,7 +17,7 @@ public class Private_access {
 
 }
 
-// This is Private_Access class
+
 class Person{
 	
 	private String name;
