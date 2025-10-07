@@ -10,7 +10,7 @@ public class Join_Ex1 {
 		j1.setName("Child Thread");
 		j1.start();
 		
-		System.out.println("Main thread is waiting for chikd thread");
+		System.out.println("Main thread is waiting for child thread");
 //		try{
 //			j1.join(); // main thread is going to wait until my j1 completes
 //		}catch(InterruptedException e) {

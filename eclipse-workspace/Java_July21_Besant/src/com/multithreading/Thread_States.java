@@ -32,5 +32,4 @@ class ExampleThread extends Thread{
 	public void run() {
 		System.out.println("Thread is running "+ Thread.currentThread().getName());
 	}
-//	System.out.println(e1.getstate());
 }
