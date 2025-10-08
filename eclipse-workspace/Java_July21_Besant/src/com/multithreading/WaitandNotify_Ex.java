@@ -10,8 +10,8 @@ public class WaitandNotify_Ex {
 		ShopThread shop = new ShopThread(order);
 		
 		// priority is used to run which method should be executed first, but sometimes it may give false output		
-		customer.setPriority(10); 
-		shop.setPriority(1);
+//		customer.setPriority(10); 
+//		shop.setPriority(1);
 		
 		shop.start();
 		customer.start();
@@ -23,20 +23,36 @@ public class WaitandNotify_Ex {
 class Order{
 	
 	boolean isReady = false;
+	boolean isOrdered = false; // new flag
 	
 	synchronized void placeOrder() {
+		
 		System.out.println("Customer ordered the bag and waiting");	
-	
-		try{
-			wait() ;
-		}catch(InterruptedException e) {
-			System.out.println(e);
+		isOrdered = true;
+		notify();
+		
+		
+		while(!isReady) {
+			try{
+				wait() ;
+			}catch(InterruptedException e) {
+				System.out.println(e);
+			}
 		}
 		
 		System.out.println("Customer got the bag");
 	}
 	
 	synchronized void prepareOrder() {
+		
+		while(!isOrdered) { // wait until the order is placed
+			try {
+				wait();
+			}catch(Exception e) {
+				System.out.println(e);
+			}
+		}
+		
 		System.out.println("Shop owner received the order and Stared to prepare");
 		
 		try{
