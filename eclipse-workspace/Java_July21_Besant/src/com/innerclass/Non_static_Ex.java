@@ -4,15 +4,15 @@ public class Non_static_Ex {
 
 	public static void main(String[] args) {
 		
-		Outer outer = new Outer();
-		Outer.Inner inner = outer.new Inner(); // object creation varies 
-		inner.show();
+		Outer1 out = new Outer1();
+		Outer1.Inner in = out.new Inner(); // object creation varies 
+		in.show();
 		
 	}
 
 }
 
-class Outer{
+class Outer1{
 	
 	private String name = "Krish";
 	

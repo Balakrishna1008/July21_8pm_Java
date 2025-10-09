@@ -1,6 +1,6 @@
 package com.innerclass;
 
-public class static_Ex {
+public class Static_Ex {
 
 	public static void main(String[] args) {
 		// with help of inner class we can access the private variable of outer class

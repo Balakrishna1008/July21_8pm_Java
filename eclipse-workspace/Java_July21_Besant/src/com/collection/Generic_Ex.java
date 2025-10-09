@@ -10,7 +10,7 @@ public class Generic_Ex {
 		List<String> names = new ArrayList<>();
 		
 		names.add("Krish");
-		names.add("100"); // Only String type can be used
+//		names.add("100"); // Only String type can be used
 		
 		System.out.println(names);
 	
