@@ -3,10 +3,8 @@ package com.studentcrud;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-//import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
-//import org.apache.catalina.ssi.SSICommand;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -17,6 +15,11 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("/addStudent")
 public class AddStudentServlet extends HttpServlet{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException  {
 		
 		res.setContentType("text/html");
@@ -27,8 +30,10 @@ public class AddStudentServlet extends HttpServlet{
 		String course = req.getParameter("course");
 		
 		try {
+			
 			Connection con = DBUtil.getConnection();
-			PreparedStatement ps = con.prepareStatement("insert into student (name, email, course) values (?, ?, ?)");
+			PreparedStatement ps = con.prepareStatement("insert into student (sname, email, course) values (?, ?, ?)");
+			
 			ps.setString(1, name);
 			ps.setString(2, email);
 			ps.setString(3, course);
@@ -36,7 +41,7 @@ public class AddStudentServlet extends HttpServlet{
 			int i = ps.executeUpdate();
 			
 			if(i > 0) {
-				out.println("<p> Data Inserted Successfully </p>");
+				out.println("<p> Data Added Successfully! </p>");
 			}else {
 				out.println("<p> Data not Added </p>");
 			}
@@ -44,16 +49,9 @@ public class AddStudentServlet extends HttpServlet{
 		}catch(Exception e) {
 			System.out.println(e);
 		}
-		
-//		Student s = new Student();
-//		s.setName(name);
-//		s.setEmail(email);
-//		s.setCourse(course);
-//		
-//		out.println("<h3> Data Added Successfully :) </h3>");
-//		out.println("<a href = 'listStudents'> View the Students </a>");
-//		out.close();
-		
+		finally {
+			out.close();
+		}
 		
 	}
 

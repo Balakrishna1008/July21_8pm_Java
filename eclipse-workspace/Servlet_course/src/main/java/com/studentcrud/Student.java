@@ -8,6 +8,12 @@ public class Student {
 	private String course;
 	
 	// this is called model class.
+	Student(int id, String name, String email, String course){
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.course = course;
+	}
 	
 	//ID
 	public int getId() {
@@ -32,6 +38,7 @@ public class Student {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
 	 // course
 	public String getCourse() {
 		return course;

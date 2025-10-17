@@ -29,7 +29,7 @@ public class UpdateStudentServlet extends HttpServlet{
 		
 		try {
 			Connection con = DBUtil.getConnection();
-			PreparedStatement ps = con.prepareStatement("update student set name = ?, email = ?, course = ? where id = ?");
+			PreparedStatement ps = con.prepareStatement("update student set sname = ?, email = ?, course = ? where id = ?");
 			ps.setString(1, name);
 			ps.setString(2, email);
 			ps.setString(3, course);

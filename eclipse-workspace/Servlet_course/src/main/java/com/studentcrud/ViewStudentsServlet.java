@@ -20,14 +20,16 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("/viewStudent")
 public class ViewStudentsServlet extends HttpServlet{
 	
-	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException  {
+	
+	//doGet method is used to get the data from DB to display
+	
+	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException  
+	
+	{
 		
 		res.setContentType("text/html");
 		PrintWriter out = res.getWriter();
 		
-		String name = req.getParameter("name");
-		String email = req.getParameter("email");
-		String course = req.getParameter("course");
 		
 		try {
 			
@@ -44,16 +46,18 @@ public class ViewStudentsServlet extends HttpServlet{
 			+ "<th> Course </th></tr>");
 			
 			while(rs.next()) {
-				out.println("<tr> <td>" + rs.getInt("id") + "</td>" 
-			    + "<td>" + rs.getString("name") + "</td>"
-			    		+ "<td>" + rs.getString("email") + "</td>"
-			    		+ "<td>" + rs.getString("course") + "</td>");
+				out.println("<tr> <td>" + rs.getInt("id") + "</td>"  
+			                   + "<td>" + rs.getString("sname") + "</td>" 
+			                   + "<td>" + rs.getString("email") + "</td>" 
+			                   + "<td>" + rs.getString("course") + "</td>");
 			}
+			out.println("</table>");
 			
 		}catch(Exception e) {
 			System.out.println(e);
 		}
 		
+		out.close();
 		
 	}
 
